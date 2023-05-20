@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr25oqwc4rn8u"]
+[gd_scene load_steps=8 format=3 uid="uid://cr25oqwc4rn8u"]
 
 [ext_resource type="Texture2D" uid="uid://dfquoybcef8k6" path="res://transparent_white_square.png" id="1_corpq"]
+[ext_resource type="Texture2D" uid="uid://c0kkm3jv0lohu" path="res://circular_gradient.png" id="2_sbi3x"]
 
 [sub_resource type="Gradient" id="Gradient_x7adr"]
 offsets = PackedFloat32Array(0, 0.476744, 1)
@@ -36,3 +37,8 @@ amount = 10
 process_material = SubResource("ParticleProcessMaterial_vmjwx")
 texture = ExtResource("1_corpq")
 lifetime = 3.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shadow_enabled = true
+texture = ExtResource("2_sbi3x")
