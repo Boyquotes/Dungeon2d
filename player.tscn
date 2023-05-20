@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://j32gqc1jske5"]
+[gd_scene load_steps=6 format=3 uid="uid://j32gqc1jske5"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lnm7m"]
 [ext_resource type="Texture2D" uid="uid://cll1hwfxggmuy" path="res://warrior.png" id="1_ycnf7"]
@@ -7,21 +7,38 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6gwsp"]
 size = Vector2(14, 5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdy2x"]
+radius = 7.0
+
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, -5)
+z_index = 4
 collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_lnm7m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.5)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_6gwsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 4
+position = Vector2(0, -7)
 texture = ExtResource("1_ycnf7")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 5)
+position = Vector2(0, -2)
 energy = 0.5
 shadow_enabled = true
 texture = ExtResource("3_wm6y5")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -7)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 4
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_xdy2x")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

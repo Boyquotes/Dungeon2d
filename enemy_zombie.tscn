@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdqbaw8whip7i"]
+[gd_scene load_steps=5 format=3 uid="uid://cdqbaw8whip7i"]
 
 [ext_resource type="Texture2D" uid="uid://csi0ue2n5bx2m" path="res://enemy1.png" id="1_rygwa"]
 [ext_resource type="Script" path="res://enemy_zombie.gd" id="1_u30xu"]
@@ -7,26 +7,25 @@
 size = Vector2(10, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hq7ui"]
-radius = 17.1063
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ff6fm"]
-radius = 9.05539
+radius = 24.9893
 
 [node name="EnemyZombie" type="CharacterBody2D"]
 z_index = 4
-position = Vector2(1, -6)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 12
+collision_mask = 12
 script = ExtResource("1_u30xu")
+max_speed = 25.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 5)
+position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_j7kcw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
 texture = ExtResource("1_rygwa")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -7)
 collision_layer = 2
 collision_mask = 2
 
@@ -34,12 +33,6 @@ collision_mask = 2
 position = Vector2(-1, 5)
 scale = Vector2(4.57318, 4.57318)
 shape = SubResource("CircleShape2D_hq7ui")
-
-[node name="NearDetectionArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NearDetectionArea"]
-position = Vector2(-1, 5)
-shape = SubResource("CircleShape2D_ff6fm")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

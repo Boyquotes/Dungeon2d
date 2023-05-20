@@ -1291,6 +1291,7 @@ sources/1 = SubResource("TileSetAtlasSource_xmdyw")
 pattern_0 = SubResource("TileMapPattern_nkyxl")
 
 [node name="World" type="Node2D"]
+y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 z_as_relative = false
